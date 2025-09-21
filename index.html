@@ -1016,7 +1016,7 @@ body {
   </div>
 
   <div class="message-container">
-    <div class="message">¡Feliz día, Made!</div>
+    <div class="message">¡Que cada una de ellas ilumine tu día y te recuerde lo especial que eres para mí., Made!</div>
   </div>
   
   <div class="flowers">
@@ -1324,7 +1324,10 @@ body {
       </div>
     </div>
   </div>
-
+ 
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="../MADE WEB/Music/kapo-video-oficial.mp3" type="audio/mpeg">
+  </audio>
   <script>
     onload = () => {
       const c = setTimeout(() => {
@@ -1358,7 +1361,20 @@ body {
             }, i * 200);
           }
         }, 2500);
-        
+        let audioStarted = false;
+
+        function startAudio() {
+            if (!audioStarted) {
+                const audio = document.getElementById('backgroundMusic');
+                audio.volume = 0.5;
+                audio.play();
+                audioStarted = true;
+            }
+        }
+
+        // Escuchar cualquier interacción para iniciar el audio
+        document.addEventListener('click', startAudio, { once: true });
+        document.addEventListener('keydown', startAudio, { once: true });
         function createFallingPetal() {
           const petal = document.createElement('div');
           petal.className = 'petal';
@@ -1398,5 +1414,8 @@ body {
       }, 1000);
     };
   </script>
+  
+
+</audio>
 </body>
 </html>
